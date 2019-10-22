@@ -13,7 +13,10 @@ angular.
         }).
         when('/comparador', {
           template: '<phone-comparador></phone-comparador>'
-        })
+        }).
+        when('/404', {
+          templateUrl: 'error.html'
+        }).
         otherwise('/phones');
     }
   ]);
