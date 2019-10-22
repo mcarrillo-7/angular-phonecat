@@ -12,7 +12,7 @@ angular.
         self.phones = Phone.query();
         self.phone1 = {};
         self.phone2 ={};
-        self.orderProp = 
+        self.orderProp = {};
       }
     ]
   });
