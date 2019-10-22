@@ -1,3 +1,4 @@
+//SIMILAR A JUNIT DE JAVA PERO EN ANGULARJS
 'use strict';
 
 describe('phoneList', function() {
