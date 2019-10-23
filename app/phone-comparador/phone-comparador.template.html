@@ -1,1 +1,46 @@
 <componente-comparador></componente-comparador>
+
+
+<h1 class="text-info">RASTREATOR AHORA COMPARA TELÉFONOS MÓVILES</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">      
+            <ul class="list-group">
+              <li class="list-group-item" 
+                  ng-repeat="phone in $ctrl.phones"
+                  ng-click="$ctrl.selecionar(phone)">
+                <img ng-src="{{phone.imageUrl}}" class="responsive" width="150" height="150"/>
+                {{phone.name}}
+              </li>          
+            </ul>
+        </div>
+        <div class="col-md-5 border border-warning">
+          <h2>Teléfono1</h2>
+          <img ng-src="{{$ctrl.phone1.imageUrl}}" width="150" height="150">
+          <h3 class="text-success">{{$ctrl.phone1.name}}</h3>
+          <p> {{$ctrl.phone2.snippet}}</p>
+          <br>
+          <p>{{$ctrl.phone1.flash}}<span> Memoria flash</span> <span class="label label-{{ ($ctrl.phone1.flash >= $ctrl.phone2.flash)?'success':'danger' }}">{{ $ctrl.phone1.flash - $ctrl.phone2.flash}}</span></p>
+          <p>{{$ctrl.phone1.ram}}<span> Memoria RAM</span> <span class="label label-{{ ($ctrl.phone1.ram >= $ctrl.phone2.ram)?'success':'danger' }}">{{ $ctrl.phone1.ram - $ctrl.phone2.ram}}</span></p>
+          <button class="btn btn-info" ng-click="comprar()"></button>
+
+          
+        </div>
+        <div class="col-md-5 border border-danger">
+            <h2>Teléfono2</h2>
+            <div class="thumbnail">
+                    <img ng-src="{{$ctrl.phone2.imageUrl}}" alt="{{$ctrl.phone2.id}}">
+                    <div class="caption">
+                      <h3 class="text-success">{{$ctrl.phone2.id}}</h3>
+                      <p> {{$ctrl.phone2.snippet}}</p>
+                      <p>{{$ctrl.phone2.flash}}<span> Memoria flash</span> <span class="label label-{{ ($ctrl.phone2.flash >= $ctrl.phone1.flash)?'success':'danger' }}">{{ $ctrl.phone2.flash - $ctrl.phone1.flash}}</span></p>
+                      <p>{{$ctrl.phone2.ram}}<span> Memoria RAM</span> <span class="label label-{{ ($ctrl.phone2.ram >= $ctrl.phone1.ram)?'success':'danger' }}">{{ $ctrl.phone2.ram - $ctrl.phone1.ram}}</span></p>
+                      <button class="btn btn-info" ng-click="comprar()"></button>              
+                    </div>
+                    <ul class="list-group">
+                      comparar con {{$ctrl.phone1.id}}           
+                    </ul>
+                  </div>
+        </div>
+    </div>
+</div>

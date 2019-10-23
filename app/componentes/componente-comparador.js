@@ -1,29 +1,16 @@
 angular.
-  module('phoneComparador').
+  module('componenteComparador').
   component('componenteComparador', {
     templateUrl: '../phone-comparador/phone-comparador.template.html',
-    controller: ['Phone',
-      function PhoneComparadorController(Phone) {        
+    bindings:{
+      phone1:'='
+    },
+    controller: [
+      function PhoneComparadorController() {        
 
         console.trace('PhoneComparadorController');
 
-        var self = this;
-
-        self.phones = Phone.query();
-        self.phone1 = {};
-        self.phone2 = {};
-        self.orderProp = 'age';
-
-        this.selecionar = function(phone){
-          console.trace('seleccionado movil');
-        
-          if(self.phone1.length<1){
-            self.phone1 = phone;
-          }else{
-            self.phone2 = self.phone1;
-            self.phone1 = phone;
-          }
-        }
+       let p1 = this.phone1
 
 
 

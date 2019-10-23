@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="app.animations.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"> 
 
+
     <script src="lib/jquery/dist/jquery.js"></script>
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-animate/angular-animate.js"></script>
@@ -26,6 +27,8 @@
     <script src="phone-detail/phone-detail.component.js"></script>
     <script src="phone-comparador/phone-comparador.module.js"></script>
     <script src="phone-comparador/phone-comparador.component.js"></script>
+    <script src="directivas/titulo.js"></script>
+    <script src="directivas/comparadorMemoria.js"></script>
 
     <!--                                FAVICON                           -->
     <link rel="apple-touch-icon" sizes="57x57" href="img/phones/favicon/apple-icon-57x57.png">
@@ -53,7 +56,9 @@
       <a href="#!/phones"><i class="fas fa-mobile-alt"></i>Inicio</a>
       <a href="#!/comparador"><i class="fas fa-greater-than-equal"></i>Comparador</a>
     </nav>
+    
     <div class="view-container">
+        <ac-titulo texto="PhoneZona" color="verde"></ac-titulo>
       <div ng-view class="view-frame"></div>
     </div>
 

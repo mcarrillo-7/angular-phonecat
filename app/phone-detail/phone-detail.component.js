@@ -1,4 +1,4 @@
-phone-detail.component.js
+'use strict'
 angular.
   module('phoneDetail').
   component('phoneDetail', {
