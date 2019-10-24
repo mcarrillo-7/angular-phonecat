@@ -1,10 +1,20 @@
 <div class="thumbnail">
-  <img ng-src="{{$ctrl.mostrar.imageUrl}}" alt="{{$ctrl.mostrar.id}}">
+  <h4>Por favor, seleccione un teléfono a comparar</h4>
+  <img 
+  src="https://images.livemint.com/img/2019/02/05/600x338/smartphones_1549359802831.jpg" 
+  alt=""
+  width="100"
+  height="200">
+  <img ng-src="{{$ctrl.phone2.imageUrl}}" alt="{{$ctrl.phone2.id}}">
   <div class="caption">
-    <h3>{{$ctrl.mostrar.id}}</h3>
-    <p> {{$ctrl.mostrar.snippet}}</p>              
+    <h3 class="text-success">{{$ctrl.phone2.id}}</h3>
+    <p> {{$ctrl.phone2.snippet}}</p>
+    
+    <p>{{$ctrl.phone2.flash}}<span> Memoria flash</span> <span class="label label-{{ ($ctrl.phone2.flash >= $ctrl.phone1.flash)?'success':'danger' }}">{{ $ctrl.phone2.flash - $ctrl.phone1.flash}}</span></p>
+    Flash <ip-compare v1="{{$ctrl.mostrar.storage.flash}}" v2="{{$ctrl.comparar.storage.flash}}" unidad="MB"></ip-compare>
+    
+    <p>{{$ctrl.phone2.ram}}<span> Memoria RAM</span> <span class="label label-{{ ($ctrl.phone2.ram >= $ctrl.phone1.ram)?'success':'danger' }}">{{ $ctrl.phone2.ram - $ctrl.phone1.ram}}</span></p>
+    Ram <ip-compare v1="{{$ctrl.mostrar.storage.ram}}" v2="{{$ctrl.comparar.storage.ram}}" unidad="MB"></ip-compare>  
+    <button class="btn btn-info" ng-click="$ctrl.comprar()">COMPRAR</button>              
   </div>
-  <ul class="list-group">
-    comparar con {{$ctrl.comparar.id}}           
-  </ul>
 </div>

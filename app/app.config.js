@@ -14,6 +14,12 @@ angular.
         when('/comparador', {
           template: '<phone-comparador></phone-comparador>'
         }).
+        when('/nuevo', {
+          templateUrl: "form.html"
+        }).
+        when('/carrito', {
+          templateUrl: 'cart.html'
+        }).
         when('/404', {
           templateUrl: 'error.html'
         }).
