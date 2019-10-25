@@ -15,7 +15,7 @@ angular.
           template: '<phone-comparador></phone-comparador>'
         }).
         when('/nuevo', {
-          templateUrl: "form.html"
+          templateUrl: "formControllers/form-componente.template.html"
         }).
         when('/carrito', {
           templateUrl: 'cart.html'

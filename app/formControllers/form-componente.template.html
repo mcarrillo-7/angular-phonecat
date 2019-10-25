@@ -1,8 +1,13 @@
 FORMULARIO
+<form ng-submit="create()">
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon3">ID:</span>
+        <input type="text" ng-model="formData.id" class="form-control"  aria-describedby="basic-addon1">
+      </div> 
 
-<div class="input-group">
+      <div class="input-group">
         <span class="input-group-addon" id="basic-addon3">Nombre:</span>
-        <input type="text" class="form-control"  aria-describedby="basic-addon1">
+        <input type="text" ng-model="formData.nombre"class="form-control"  aria-describedby="basic-addon1">
       </div>
       
       <div class="input-group">
@@ -13,21 +18,22 @@ FORMULARIO
       
       <div class="input-group">
         <span class="input-group-addon">Memoria RAM en MB</span>
-        <input type="number" class="form-control" aria-label="memoria RAM">
+        <input type="number" ng-model="formData.ram" class="form-control" aria-label="memoria RAM">
         <span class="input-group-addon">RAM</span>
       </div>
 
       <div class="input-group">
             <span class="input-group-addon">Memoria ROM (Flash) en MB</span>
-            <input type="number" class="form-control" aria-label="memoria ROM">
+            <input type="number" ng-model="formData.flash" class="form-control" aria-label="memoria ROM">
             <span class="input-group-addon">ROM</span>
           </div>
       <br>
-      <label for="basic-url">Image URL</label>
+      <label for="basic-url">Enlace de la imagen</label>
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon3">URL:</span>
-        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+        <input type="text" ng-model="formData.imagen" class="form-control" id="basic-url" aria-describedby="basic-addon3">
       </div>
       <div class="input-group">
             <button n-click="guardar()" class="button-success">CREAR</button>
           </div>
+        </form>

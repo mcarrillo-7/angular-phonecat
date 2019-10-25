@@ -2,10 +2,13 @@
 <h1 class="text-info">RASTREATOR AHORA COMPARA TELÉFONOS MÓVILES</h1>
 <div class="container">
     <div class="row">
-        <div class="col-md-2">      
+        <div class="col-md-2">
+          <h5 class="text-success">Busca por nombre...</h5>
+          <input type="text" ng-model="$ctrl.id">   
+        </label>      
             <ul class="list-group">
               <li class="list-group-item" 
-                  ng-repeat="phone in $ctrl.phones"
+                  ng-repeat="phone in $ctrl.phones | filter:$ctrl.id"
                   ng-click="$ctrl.selecionar(phone)">
                 <img ng-src="{{phone.imageUrl}}" class="responsive" width="150" height="150"/>
                 {{phone.name}}

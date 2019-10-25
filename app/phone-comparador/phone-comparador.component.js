@@ -16,26 +16,39 @@ angular.
 
         var self = this;
 
-        self.phones = Phone.query();
+        var hashPhones = new Map();
+        
+        self.phones = {};
+        Phone.getAll().then( 
+          function successCallback(response) {
+            console.trace("Success");
+            self.phones = response.data;
+          },
+          function errorCallback(response) {
+            console.warn("Error");
+          }
+        );
         self.phone1 = {};
         self.phone2 = {};
         self.orderProp = 'age';
 
         this.selecionar = function(phone){
           console.trace('seleccionado movil');
-        
-          if(self.phone1.length<1){
-            self.phone1 = phone;
-          }else{
-            self.phone2 = self.phone1;
-            self.phone1 = phone;
-          }
+          self.phone2 = self.phone1;
+          self.phone1 = phone;
         }
 
 
         $scope.$on("eventoCompra", function(event, data){
 
           alert('eventoCompra en padre ' + data.telefono.id);
+          if(hashPhones.has(data.telefono.id)){
+            hashPhones.set(data.telefono.id, )
+          } else{
+
+          }
+           
+
 
       });
 
@@ -52,11 +65,23 @@ angular.
       mostrar : '=',
       comparar : '='
     },
-    controller: ['$scope',
-      function PhoneComparadorDetalleController($scope) {        
+    controller: ['Phone', '$scope',
+      function PhoneComparadorDetalleController(Phone, $scope) {        
 
         console.trace('PhoneComparadorDetalleController');
         var self = this;
+        
+        self.phones = {};
+        Phone.getAll().then( 
+          function successCallback(response) {
+            console.trace("Success");
+            self.phones = response.data;
+          },
+          function errorCallback(response) {
+            console.warn("Error");
+          }
+        );
+        this.orderProp = 'age';
 
         self.comprar = function(){
           console.trace('click boton compra %o', self.mostrar  );
