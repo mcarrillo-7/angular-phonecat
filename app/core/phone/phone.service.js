@@ -19,9 +19,10 @@ angular.
         return $http.get(url);
       }
 
-      service.create = function(id, nombre, descripcion, flash, ram, linkImagen){
+      service.create = function(phone){
         let url = endpoint;
-        return $http.post(url,formData);
+        console.trace('POST' + url);
+        return $http.post(url,phone);
       }
 
       return service;

@@ -2,11 +2,12 @@
 angular.
   module('phoneCart').
   component('phoneCart', {
-    templateUrl: 'phone-detail/phone-detail.template.html',
-    controller: ['$routeParams', 'Phone', '$location',
-      function PhoneDetailController($routeParams, Phone, $location) {
+    templateUrl: 'phone-cart/phone-cart.template.html',
+    controller: [ 'Phone', 'servicioCarrito',
+      function PhoneCartController( Phone, servicioCarrito) {
+        console.trace('PhoneCartController');
         var self = this;
-        
+        self.phones = servicioCarrito.getCompras();
         
         Phone.getById = function( id ){
           let url = endpoint + id;

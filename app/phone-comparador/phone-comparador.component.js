@@ -9,28 +9,30 @@ angular.
       mostrar : '=',
       comparar : '='
     },
-    controller: ['Phone', '$scope',
-      function PhoneComparadorController(Phone,  $scope) {        
+    controller: ['Phone', 'servicioCarrito', '$scope',
+      function PhoneComparadorController(Phone, servicioCarrito, $scope) {        
 
         console.trace('PhoneComparadorController');
 
         var self = this;
 
+        self.filtro = {
+          "atributo": "ram",         
+          "min": 0,
+          "max": 32000
+        }
+
         var hashPhones = new Map();
         
-        self.phones = {};
-        Phone.getAll().then( 
-          function successCallback(response) {
-            console.trace("Success");
-            self.phones = response.data;
-          },
-          function errorCallback(response) {
-            console.warn("Error");
-          }
-        );
+       
+        
+        
+        self.phones= [];
         self.phone1 = {};
         self.phone2 = {};
         self.orderProp = 'age';
+
+        Phone.getAll().then( (res)=> self.phones = res.data  );
 
         this.selecionar = function(phone){
           console.trace('seleccionado movil');
@@ -42,11 +44,13 @@ angular.
         $scope.$on("eventoCompra", function(event, data){
 
           alert('eventoCompra en padre ' + data.telefono.id);
-          if(hashPhones.has(data.telefono.id)){
-            hashPhones.set(data.telefono.id, )
-          } else{
-
-          }
+          let compra = {
+            "id": data.telefono.id,
+            "nombre": data.telefono.name,
+            "imagen": data.telefono.imageUrl,
+            "cantidad": 1
+          };
+          servicioCarrito.guardarCompra(compra);
            
 
 
@@ -57,6 +61,31 @@ angular.
       }
     ]
   });
+
+  angular.module('phoneComparador').filter('filtroTelefonos', function(){
+    return function(items, filtroObject){
+      console.log('filtroTelefonos filtro=%o', filtroObject);
+
+      if ( items ){
+
+        return items.filter((telefono)=> {
+          if(telefono.storage){
+                     let value = telefono.storage[filtroObject.atributo];
+          //console.debug("telefono=%s value=%s min%s max=%s", telefono.id, value, min, max );
+          return value >= filtroObject.min && value <= filtroObject.max ; 
+          } else{
+            return true;
+          }
+
+          
+        });
+
+      }  
+
+      // return items;
+    }
+  });
+
   angular.
   module('phoneComparador').
   component('phoneComparadorDetalle', {

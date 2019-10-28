@@ -1,14 +1,24 @@
 
 <h1 class="text-info">RASTREATOR AHORA COMPARA TELÉFONOS MÓVILES</h1>
+{{ $ctrl.filtro | json }}
 <div class="container">
     <div class="row">
         <div class="col-md-2">
           <h5 class="text-success">Busca por nombre...</h5>
-          <input type="text" ng-model="$ctrl.id">   
-        </label>      
+          <input type="text" ng-model="$ctrl.id">  
+          <select ng-model="$ctrl.filtro.atributo">
+            <option value="ram" >RAM</option>
+            <option value="flash">FLASH</option>
+            
+          </select> 
+          <label for="">MIN {{$ctrl.filtro.min}}</label>
+        <input type="range" min="0" max="32000" step="512" ng-model="$ctrl.filtro.min" >      
+
+        <label for="">MIN {{$ctrl.filtro.max}}</label>
+        <input type="range" min="0" max="32000" step="512" ng-model="$ctrl.filtro.max" >
             <ul class="list-group">
               <li class="list-group-item" 
-                  ng-repeat="phone in $ctrl.phones | filter:$ctrl.id"
+                  ng-repeat="phone in $ctrl.phones | filter:$ctrl.id | filtroTelefonos:$ctrl.filtro"
                   ng-click="$ctrl.selecionar(phone)">
                 <img ng-src="{{phone.imageUrl}}" class="responsive" width="150" height="150"/>
                 {{phone.name}}

@@ -15,10 +15,13 @@ angular.
           template: '<phone-comparador></phone-comparador>'
         }).
         when('/nuevo', {
-          templateUrl: "formControllers/form-componente.template.html"
+          template: '<phone-form-componente></phone-form-componente>'
+        }).
+        when('/editar/:phoneId', {
+          template: '<phone-form-componente></phone-form-componente>'
         }).
         when('/carrito', {
-          templateUrl: 'cart.html'
+          template: '<phone-cart></phone-cart>'
         }).
         when('/404', {
           templateUrl: 'error.html'
